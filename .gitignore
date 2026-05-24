@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.mpy
+firmware*.bin
+build/
+.vscode/
+.idea/
+config_local.py
