@@ -1,0 +1,115 @@
+# AXS15231B QSPI display driver for the JC3248W535.
+#
+# Requires a MicroPython build that exposes a QSPI LCD bus -- the
+# lvgl_micropython firmware (lcd_bus.SPIBus with quad=True) is the
+# reference target. With stock MicroPython this module will raise at import.
+
+from lib import board
+
+try:
+    import lcd_bus
+    import lvgl as lv
+except ImportError as e:
+    raise ImportError(
+        "AXS15231B driver requires lvgl_micropython firmware "
+        "(see CLAUDE.md for the build/flash steps)"
+    ) from e
+
+
+# Init sequence derived from the public Arduino_AXS15231B reference.
+# Each entry: (cmd, data_bytes, delay_ms)
+_INIT_SEQ = (
+    (0xBB, b"\x5A\xA5", 0),
+    (0xA0, b"\xC0\x10\x00\x02\x00\x00\x04\x3F\x20\x05\x0F\x18\x21\x10", 0),
+    (0xA2, b"\x30\x3C\x24\x14\xD0\x20\xFF\xE0\x40\x19\x80\x80\x80\x20\xF9\x10\x02\xFF\xFF\xF0\x90\x01\x32\xA0\x91\xE0\x20\x7F\xFF\x00\x5A", 0),
+    (0xD0, b"\xE0\x40\x51\x24\x08\x05\x10\x01\x20\x15\x42\xC2\x22\x22\xAA\x03\x10\x12\x60\x14\x1E\x51\x15\x00\x8A\x20\x00\x03\x3A\x12", 0),
+    (0xA3, b"\xA0\x06\xAA\x00\x08\x02\x0A\x04\x0A\x02\x08\x08\x88\x00\x80\x10\x33\x14\x4A\x40\x80\x00\x08\x08\x14\x6A\x88\x0A\x00\x80\x10\x33\x14\x4A\x40\x80\x00\x20\x20\x14\x6A\x88\x14\x00\x80\x10\x33\x14\x4A\x40\x80\x00\x08\x08\x14\x6A\x88", 0),
+    (0xC1, b"\x31\x04\x02\x02\x71\x05\x24\x55\x02\x00\x41\x00\x53\xFF\xFF\xFF\x4F\x52\x00\x4F\x52\x00\x45\x3B\x0B\x02\x0D\x00\xFF\x40", 0),
+    (0xC3, b"\x00\x00\x00\x50\x03\x00\x00\x00\x01\x80\x01", 0),
+    (0xC4, b"\x00\x24\x33\x80\x00\xEA\x64\x32\xC8\x64\xC8\x32\x90\x90\x11\x06\xDC\xFA\x00\x00\x80\xFE\x10\x10\x00\x0A\x0A\x44\x50", 0),
+    (0xC5, b"\x18\x00\x00\x03\xFE\x3A\x4A\x20\x30\x10\x88\xDE\x0D\x08\x0F\x0F\x01\x3A\x4A\x20\x10\x10\x00", 0),
+    (0xC6, b"\x05\x0A\x05\x0A\x00\xE0\x2E\x0B\x12\x22\x12\x22\x01\x03\x00\x3F\x6A\x18\xC8\x22", 0),
+    (0xC7, b"\x50\x32\x28\x00\xA2\x80\x8F\x00\x80\xFF\x07\x11\x9C\x67\xFF\x24\x0C\x0D\x0E\x0F", 0),
+    (0xC9, b"\x33\x44\x44\x01", 0),
+    (0xCF, b"\x2C\x1E\x88\x58\x13\x18\x56\x18\x1E\x68\x88\x00\x65\x09\x22\xC4\x0C\x77\x22\x44\xAA\x55\x08\x08\x12\xA0\x08", 0),
+    (0xD5, b"\x40\x8E\x8D\x01\x35\x04\x92\x74\x04\x92\x44\xC4\x32\x39\x37\x77\x07\xCF\x32\x02\x04\x44\x44\x40\x29\x02\xAA\x22\x04\x00\x00\x80\x00\x00\x55\x53", 0),
+    (0xD6, b"\x10\x32\x54\x76\x98\xBA\xDC\xFE\x93\x00\x01\x83\x07\x07\x00\x07\x07\x00\x00\x00\x00\x00\x84\x00\x20\x01\x00\x00\x00\x00\x00\x00\x03\x00\x00", 0),
+    (0xD7, b"\x03\x01\x0B\x09\x0F\x0D\x1E\x1F\x18\x1D\x1F\x19\x40\x8E\x04\x00\x20\xA0\x1F", 0),
+    (0xD8, b"\x02\x00\x0A\x08\x0E\x0C\x1E\x1F\x18\x1D\x1F\x19", 0),
+    (0xD9, b"\x00\x0D\x1B\x12\x05\x0B\x03\x06\x07\x08\x07\x07\x06\x0E\x09\x0F\x0E\x12\x14\x00\x00\x00\x00\x3F\x00\x00", 0),
+    (0xDD, b"\x00\x0D\x1B\x12\x05\x0B\x03\x06\x07\x08\x07\x07\x06\x0E\x09\x0F\x0E\x12\x14\x00\x00\x00\x00\x3F\x00\x00", 0),
+    (0xDF, b"\x44\x73\x4B\x69\x00\x0A\x02\x90", 0),
+    (0xE0, b"\x32\x30\x00\x06\x03\x16\x01\x35\x05\x97\x07\x05\x0E\x0E\x0E\x09", 0),
+    (0xE1, b"\x30\x30\x00\x06\x03\x36\x02\x35\x05\x97\x07\x05\x0E\x0E\x0F\x09", 0),
+    (0xE2, b"\x05\x65\x0B\x05\x10\x07\x18\x07\x18\x36\x00\x00\x03\xFF\x3F\xFF\x3F\x08\x09\x36\x36", 0),
+    (0xE3, b"\x05\x65\x0B\x05\x10\x07\x18\x07\x18\x36\x00\x00\x03\xFF\x3F\xFF\x3F\x08\x09\x36\x36", 0),
+    (0xE4, b"\x88\x00\x10\x10\x00\x10\x82\x82\x21\x21\x80\x80\x00\x00\x06\x86\x40\xFF\x18", 0),
+    (0xE5, b"\x88\x00\x10\x10\x00\x10\x83\x83\x21\x21\x80\x80\x00\x00\x06\x86\x40\xFF\x18", 0),
+    (0xBB, b"\x00\x00", 0),
+    (0x35, b"\x00", 0),
+    (0x3A, b"\x55", 0),       # 16-bit/pixel
+    (0x53, b"\x20", 0),       # brightness ctrl
+    (0x36, b"\x00", 0),       # MADCTL -- portrait
+    (0x11, b"",     120),     # sleep out
+    (0x29, b"",     20),      # display on
+)
+
+
+class Display:
+    def __init__(self, rotation=0):
+        self.width = board.LCD_WIDTH
+        self.height = board.LCD_HEIGHT
+        self.bus = lcd_bus.SPIBus(
+            dc=-1,
+            host=1,
+            sclk=board.LCD_SCK,
+            mosi=board.LCD_D0,
+            cs=board.LCD_CS,
+            freq=80_000_000,
+            quad_pins=(board.LCD_D0, board.LCD_D1, board.LCD_D2, board.LCD_D3),
+            quad=True,
+        )
+        self._send_init()
+        self._bind_lvgl()
+        self.set_backlight(80)
+        if rotation:
+            self.set_rotation(rotation)
+
+    def _send_init(self):
+        for cmd, data, delay_ms in _INIT_SEQ:
+            self.bus.tx_param(cmd, data)
+            if delay_ms:
+                import time
+                time.sleep_ms(delay_ms)
+
+    def _bind_lvgl(self):
+        buf_size = self.width * 40 * 2  # 40-line partial buffer, RGB565
+        self.fb1 = bytearray(buf_size)
+        self.fb2 = bytearray(buf_size)
+        self.disp = lv.display_create(self.width, self.height)
+        self.disp.set_color_format(lv.COLOR_FORMAT.RGB565)
+        self.disp.set_buffers(
+            self.fb1, self.fb2, buf_size,
+            lv.DISPLAY_RENDER_MODE.PARTIAL,
+        )
+        self.disp.set_flush_cb(self._flush)
+
+    def _flush(self, disp, area, px):
+        self.bus.tx_color(
+            0x2C, px,
+            area.x1, area.y1, area.x2, area.y2,
+            0, False, 16,
+        )
+        disp.flush_ready()
+
+    def set_backlight(self, percent):
+        from machine import Pin, PWM
+        if not hasattr(self, "_bl"):
+            self._bl = PWM(Pin(board.LCD_BL), freq=20_000)
+        self._bl.duty_u16(int(max(0, min(100, percent)) * 65535 / 100))
+
+    def set_rotation(self, rot):
+        madctl = {0: 0x00, 1: 0x60, 2: 0xC0, 3: 0xA0}.get(rot, 0x00)
+        self.bus.tx_param(0x36, bytes([madctl]))
+        if rot in (1, 3):
+            self.width, self.height = board.LCD_HEIGHT, board.LCD_WIDTH
