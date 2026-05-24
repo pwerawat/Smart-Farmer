@@ -1,0 +1,7 @@
+# Smart-Farmer: ESP32-S3 + Guition JC3248W535
+cmake_minimum_required(VERSION 3.16)
+
+set(IDF_TARGET "esp32s3" CACHE STRING "ESP-IDF target")
+
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(smart_farmer)
