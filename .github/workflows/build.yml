@@ -1,0 +1,46 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  esp-idf-build:
+    name: idf.py build (esp32s3)
+    runs-on: ubuntu-latest
+    # Pinned to ESP-IDF v5.3 LTS — has stable QSPI display support
+    # (esp_lcd_panel_io_spi_config_t.flags.quad_mode) and rgb_ele_order /
+    # ADC_ATTEN_DB_12 used by this firmware.
+    container: espressif/idf:release-v5.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache managed components
+        uses: actions/cache@v4
+        with:
+          path: |
+            managed_components
+            dependencies.lock
+          key: idf-managed-${{ hashFiles('main/idf_component.yml') }}
+
+      - name: Build
+        shell: bash
+        run: |
+          . $IDF_PATH/export.sh
+          idf.py set-target esp32s3
+          idf.py build
+
+      - name: Upload firmware artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smart-farmer-esp32s3
+          path: |
+            build/smart_farmer.bin
+            build/smart_farmer.elf
+            build/bootloader/bootloader.bin
+            build/partition_table/partition-table.bin
+          if-no-files-found: warn

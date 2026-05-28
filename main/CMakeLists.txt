@@ -1,0 +1,31 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "app_state.c"
+        "display/display.c"
+        "display/axs15231b_panel.c"
+        "display/axs15231b_touch.c"
+        "display/lvgl_port.c"
+        "net/wifi.c"
+        "net/mqtt.c"
+        "sensors/sensors.c"
+        "control/relays.c"
+        "ui/ui_dashboard.c"
+    INCLUDE_DIRS
+        "."
+        "display"
+        "net"
+        "sensors"
+        "control"
+        "ui"
+    REQUIRES
+        driver
+        esp_lcd
+        esp_wifi
+        esp_event
+        esp_netif
+        nvs_flash
+        mqtt
+        esp_adc
+        esp_timer
+)
