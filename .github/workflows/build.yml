@@ -10,8 +10,10 @@ jobs:
   esp-idf-build:
     name: idf.py build (esp32s3)
     runs-on: ubuntu-latest
-    # Pinned to the same minor ESP-IDF release the firmware targets.
-    container: espressif/idf:release-v5.1
+    # Pinned to ESP-IDF v5.3 LTS — has stable QSPI display support
+    # (esp_lcd_panel_io_spi_config_t.flags.quad_mode) and rgb_ele_order /
+    # ADC_ATTEN_DB_12 used by this firmware.
+    container: espressif/idf:release-v5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
