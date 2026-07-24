@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B0ED913C57ED4F628DC00647 /* DailyLifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6FCAAAACBFB8E112F46647 /* DailyLifeApp.swift */; };
+		9FFB88C49E677F84A7754CEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2A1193DEA9326204BFE70F /* ContentView.swift */; };
+		AFBD9712120B123CA8B91F1B /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F622AEF36EC21656679F107E /* SensorReading.swift */; };
+		C348F8E3C77869EE4B6D27FA /* RelayDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DFF52229EB6A3AA25D7B83 /* RelayDevice.swift */; };
+		D6F02C708B6A766F9BBB8515 /* DailyLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95420A99012E63CE584487 /* DailyLogEntry.swift */; };
+		D99C69F7A030E2E0C0AD71EF /* TelemetryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA393D546A9C8C4B9B16AE2 /* TelemetryProvider.swift */; };
+		05BDEE6E0D6293861AE70433 /* DashboardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8FDF0650ED3A681D112AEA /* DashboardStore.swift */; };
+		C37913B9C0982368DC835052 /* DailyLogStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FF869D942AED69F7197ED3 /* DailyLogStore.swift */; };
+		E2060A42F039637581ED2BBA /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A5FE0102278AF3CB4BF5DA /* DashboardView.swift */; };
+		11A310B970144D6DF7671690 /* RelaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F42B7AAE420CF963DC5E75 /* RelaysView.swift */; };
+		002F7A0810C7357060ECE49B /* DailyLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4674C4087FCE5D0AA306A06D /* DailyLogView.swift */; };
+		7F13FA6C1D3C7B1994B7D2FE /* AddLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDDC7F0C7A4C5B63C566AEB /* AddLogEntryView.swift */; };
+		2F6E99148FEB2F55167E5729 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D2F7A54CE7D24F667E85C0 /* SettingsView.swift */; };
+		90D9944863ACD036EF458AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9E2EA4A7D7136F1176831A9 /* Assets.xcassets */; };
+		EC01F3C267946BA5814DBA70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F4AD9C89F16050A0E68068 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0CB490021828F8F94D93055B /* DailyLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D6FCAAAACBFB8E112F46647 /* DailyLifeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLifeApp.swift; sourceTree = "<group>"; };
+		0B2A1193DEA9326204BFE70F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F622AEF36EC21656679F107E /* SensorReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorReading.swift; sourceTree = "<group>"; };
+		06DFF52229EB6A3AA25D7B83 /* RelayDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayDevice.swift; sourceTree = "<group>"; };
+		8D95420A99012E63CE584487 /* DailyLogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLogEntry.swift; sourceTree = "<group>"; };
+		FFA393D546A9C8C4B9B16AE2 /* TelemetryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryProvider.swift; sourceTree = "<group>"; };
+		EA8FDF0650ED3A681D112AEA /* DashboardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardStore.swift; sourceTree = "<group>"; };
+		61FF869D942AED69F7197ED3 /* DailyLogStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLogStore.swift; sourceTree = "<group>"; };
+		89A5FE0102278AF3CB4BF5DA /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		04F42B7AAE420CF963DC5E75 /* RelaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaysView.swift; sourceTree = "<group>"; };
+		4674C4087FCE5D0AA306A06D /* DailyLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLogView.swift; sourceTree = "<group>"; };
+		3FDDC7F0C7A4C5B63C566AEB /* AddLogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogEntryView.swift; sourceTree = "<group>"; };
+		59D2F7A54CE7D24F667E85C0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A9E2EA4A7D7136F1176831A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49F4AD9C89F16050A0E68068 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		741F6B1EAF02886886D91183 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D48D979BE7B44BFFC158DED5 = {
+			isa = PBXGroup;
+			children = (
+				C1D3EEB7C8EE3D5286284685 /* DailyLife */,
+				88EF6A4351A9AD4898F5882C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		88EF6A4351A9AD4898F5882C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CB490021828F8F94D93055B /* DailyLife.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C1D3EEB7C8EE3D5286284685 /* DailyLife */ = {
+			isa = PBXGroup;
+			children = (
+				7D6FCAAAACBFB8E112F46647 /* DailyLifeApp.swift */,
+				0B2A1193DEA9326204BFE70F /* ContentView.swift */,
+				3C1F989F4596631F222E04A1 /* Models */,
+				B5BAB03691ACA09B0BF2A3F0 /* Stores */,
+				7E4FE4C873D505065CB38C2D /* Views */,
+				A9E2EA4A7D7136F1176831A9 /* Assets.xcassets */,
+				41E6D6D91A36227AF2F2CE70 /* Preview Content */,
+			);
+			path = DailyLife;
+			sourceTree = "<group>";
+		};
+		3C1F989F4596631F222E04A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F622AEF36EC21656679F107E /* SensorReading.swift */,
+				06DFF52229EB6A3AA25D7B83 /* RelayDevice.swift */,
+				8D95420A99012E63CE584487 /* DailyLogEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B5BAB03691ACA09B0BF2A3F0 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				FFA393D546A9C8C4B9B16AE2 /* TelemetryProvider.swift */,
+				EA8FDF0650ED3A681D112AEA /* DashboardStore.swift */,
+				61FF869D942AED69F7197ED3 /* DailyLogStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		7E4FE4C873D505065CB38C2D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89A5FE0102278AF3CB4BF5DA /* DashboardView.swift */,
+				04F42B7AAE420CF963DC5E75 /* RelaysView.swift */,
+				4674C4087FCE5D0AA306A06D /* DailyLogView.swift */,
+				3FDDC7F0C7A4C5B63C566AEB /* AddLogEntryView.swift */,
+				59D2F7A54CE7D24F667E85C0 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		41E6D6D91A36227AF2F2CE70 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				49F4AD9C89F16050A0E68068 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		79DCE9793B23CF1B5EB7D1F5 /* DailyLife */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 810EA638AAC21C738C4117C7 /* Build configuration list for PBXNativeTarget "DailyLife" */;
+			buildPhases = (
+				9326564E6686E6E747C65B76 /* Sources */,
+				741F6B1EAF02886886D91183 /* Frameworks */,
+				F7818CBC19D97D132B469097 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DailyLife;
+			productName = DailyLife;
+			productReference = 0CB490021828F8F94D93055B /* DailyLife.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DE3FC1D6B75F785BA319ACF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					79DCE9793B23CF1B5EB7D1F5 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = A5FAF20CA414CCB27A49D747 /* Build configuration list for PBXProject "DailyLife" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D48D979BE7B44BFFC158DED5;
+			productRefGroup = 88EF6A4351A9AD4898F5882C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79DCE9793B23CF1B5EB7D1F5 /* DailyLife */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F7818CBC19D97D132B469097 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC01F3C267946BA5814DBA70 /* Preview Assets.xcassets in Resources */,
+				90D9944863ACD036EF458AA6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9326564E6686E6E747C65B76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0ED913C57ED4F628DC00647 /* DailyLifeApp.swift in Sources */,
+				9FFB88C49E677F84A7754CEB /* ContentView.swift in Sources */,
+				AFBD9712120B123CA8B91F1B /* SensorReading.swift in Sources */,
+				C348F8E3C77869EE4B6D27FA /* RelayDevice.swift in Sources */,
+				D6F02C708B6A766F9BBB8515 /* DailyLogEntry.swift in Sources */,
+				D99C69F7A030E2E0C0AD71EF /* TelemetryProvider.swift in Sources */,
+				05BDEE6E0D6293861AE70433 /* DashboardStore.swift in Sources */,
+				C37913B9C0982368DC835052 /* DailyLogStore.swift in Sources */,
+				E2060A42F039637581ED2BBA /* DashboardView.swift in Sources */,
+				11A310B970144D6DF7671690 /* RelaysView.swift in Sources */,
+				002F7A0810C7357060ECE49B /* DailyLogView.swift in Sources */,
+				7F13FA6C1D3C7B1994B7D2FE /* AddLogEntryView.swift in Sources */,
+				2F6E99148FEB2F55167E5729 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DA7E71E245F9D74C012DA7B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FD8406C9AD7295C21DFBE3E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9786967DACDFB05ACB612E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DailyLife/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartfarmer.DailyLife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DC9FD1438893BE5956DB2DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DailyLife/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartfarmer.DailyLife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5FAF20CA414CCB27A49D747 /* Build configuration list for PBXProject "DailyLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA7E71E245F9D74C012DA7B8 /* Debug */,
+				FD8406C9AD7295C21DFBE3E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		810EA638AAC21C738C4117C7 /* Build configuration list for PBXNativeTarget "DailyLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9786967DACDFB05ACB612E7 /* Debug */,
+				DC9FD1438893BE5956DB2DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DE3FC1D6B75F785BA319ACF /* Project object */;
+}
